@@ -1,12 +1,13 @@
 const express = require('express');
 const http = require('http');
 const {default: Terra} = require("terra-api");
+const { app, passport } = require('./index');
 
 
-const terra = new Terra("devhealth-testing-YQLSEBodYU", "SRMnRszM3tcn4_8t-Z7FLPRJUvA8w0Bg", "some secret")
-app = express()
+const terra = new Terra("devhealth-testing-YQLSEBodYU", "SRMnRszM3tcn4_8t-Z7FLPRJUvA8w0Bg", "some secret");
 server = http.createServer(app);
 
+//redirecting to terra 
 app.get('/', async function (req, res) {
   const resp = await terra.generateWidgetSession({
     referenceID : "HelloHarvard--", 
@@ -20,6 +21,11 @@ app.get('/world.html', function (req, res) {
   res.send('Hello World');
 });
 
+
+app.get('/another-route', (req, res) => {
+  res.send('This is another route.');
+});
+
 /*
 apple login authentication
 -login success: contain code, id_token, state, user
@@ -30,7 +36,7 @@ apple login authentication
 */
 //handle the authorization response
 app.get('/auth', function(req, res){
-  // let result = 
+  let result = req
   console.log(req.url)
 });
 
@@ -41,7 +47,6 @@ app.get('/auth', function(req, res){
 //login & authentication
 
 //get data from TERRA API
-
 
 
 
