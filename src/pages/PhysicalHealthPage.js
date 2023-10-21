@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import Logo from '../assets/images/Logo.svg';
 import Avatar from '../assets/images/Avatar.png';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+
+import Paper from "@material-ui/core/Paper";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
 
 function SimplePage(props) {
+
+    const [value, setValue] = React.useState(2);
 
     function getCurrentDate() {
         const today = new Date();
@@ -33,6 +39,12 @@ function SimplePage(props) {
                     Today is {getCurrentDate()}. Make sure to hydrate and move around.
                 </p>
             </div>
+
+            <div className="App">
+                <h1>Simple Tab Component</h1>
+                <Tab tabs={tabs} />
+            </div>
+            
 
         </div>
     );

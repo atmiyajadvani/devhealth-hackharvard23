@@ -4,10 +4,10 @@ import Logo from '../assets/images/Logo.svg';
 import GoogleButton from 'react-google-button'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import PhysicalHealthPage from '../pages/PhysicalHealthPage';
-import GoalsPage from '../pages/GoalsPage';
-import MentalHealthPage from '../pages/MentalHealthPage';
-import WellBeingPage from '../pages/WellBeingPage';
+import PhysicalHealthPage from './PhysicalHealthPage';
+import GoalsPage from './GoalsPage';
+import MentalHealthPage from './MentalHealthPage';
+import WellBeingPage from './WellBeingPage';
 
 import {useEffect} from "react";
 import axios from "axios";
