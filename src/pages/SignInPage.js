@@ -9,35 +9,44 @@ import GoalsPage from '../pages/GoalsPage';
 import MentalHealthPage from '../pages/MentalHealthPage';
 import WellBeingPage from '../pages/WellBeingPage';
 
+import {useEffect} from "react";
+import axios from "axios";
+
 
 function SignInPage() {
 
-    function autheticateUser(){
-        console.log("User authenticated")
-      fetch('/auth/google', {
-        method: 'GET',
-      })
-      .then(response => response.json())
-      .then(data => {
-        if ((data.error)) {
-          console.log('Authentication failed:', data.error);
-          //need to go to the signin page again
-        } else if(data === 'Authentication failed'){
-          console.log('Authentication failed');
-          //need to go to the signin page again
-        } else {
-          // Authentication was successful
-          //need to go to health page
-        }
-      })
-      .catch(error => {
-        console.error('Error during authentication:', error);
+  function autheticateUser(){
+      console.log("User authenticated")
+    fetch('/auth/google', {
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+      if ((data.error)) {
+        console.log('Authentication failed:', data.error);
+        //need to go to the signin page again
+      } else if(data === 'Authentication failed'){
+        console.log('Authentication failed');
+        //need to go to the signin page again
+      } else {
+        // Authentication was successful
+        //need to go to health page
+      }
+    })
+    .catch(error => {
+      console.error('Error during authentication:', error);
 
-      });
-    }
-  
+    });
+  }
 
-    };
+
+
+  const getApi = async ()=> {
+    axios.get("/").then((res)=>console.log(res.data))
+  };
+  useEffect(()=>{
+    getApi();
+  }, []);
 
     return (
       <div className="App">

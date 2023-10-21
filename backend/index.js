@@ -42,16 +42,15 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.get('/')
 
 // Google Authentication routes
-app.get('/', async function (req, res) {
+app.get('/signin', async function (req, res) {
   const resp = await terra.generateWidgetSession({
     referenceID : "HelloHarvard--", 
     language: "en",
     authSuccessRedirectUrl: "http://localhost:8000/auth/google",
     authFailureRedirectUrl: "http://localhost:8000/auth/google" });
-  res.redirect(200, resp.url);
+  res.redirect(302, resp.url);
 });
 
 app.get('/auth/google',
@@ -70,7 +69,7 @@ app.get('/auth/google',
 
 app.get('/auth/google/fail', (req, res) => {
   // You can customize this route to display an error message to the user.
-  res.send('Authentication failed. Please try again.');
+  res.send('Authentication failed.');
 });
 
 
@@ -96,6 +95,12 @@ app.get('/terra', async (req, res) => {
     authFailureRedirectUrl: "http://localhost:8000/auth/google"
   });
 });
+
+//APIs that go to the pages
+app.get("/", (req,res)=> {
+  res.send('this is the first page')
+});
+
 
 
 // Define additional Terra API routes here
