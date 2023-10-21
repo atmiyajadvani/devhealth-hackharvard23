@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import Logo from '../assets/images/Logo.svg';
 import Avatar from '../assets/images/Avatar.png';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 function SimplePage(props) {
 
@@ -31,14 +32,6 @@ function SimplePage(props) {
                 <p style={{marginTop: "-5px"}}>
                     Today is {getCurrentDate()}. Make sure to hydrate and move around.
                 </p>
-            </div>
-
-            <div id='section-nav'>
-                <div id='section-nav-left'>
-                    <p>Physical Health</p>
-                    <p>Mental Health</p>
-                    <p>Well Being</p>
-                </div>
             </div>
 
         </div>

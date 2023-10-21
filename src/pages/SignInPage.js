@@ -15,7 +15,7 @@ import axios from "axios";
 
 function SignInPage() {
 
-  function autheticateUser(){
+  function authenticateUser(){
       console.log("User authenticated")
     fetch('/auth/google', {
       method: 'GET',
@@ -47,6 +47,7 @@ function SignInPage() {
   useEffect(()=>{
     getApi();
   }, []);
+  
 
     return (
       <div className="App">
@@ -61,7 +62,7 @@ function SignInPage() {
         <div className='App'>
           {/* <button id='apple-login'>Sign in with Apple</button> */}
           <GoogleButton style={{marginTop: "120px"}}
-            onClick={autheticateUser}/>
+            onClick={authenticateUser}/>
           <p>By continuing with Apple, you agree to DevHealth’s Term of Service and Privacy Policy</p>
         </div>
       </div>
