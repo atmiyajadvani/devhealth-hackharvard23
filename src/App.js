@@ -1,28 +1,27 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Logo from './assets/images/Logo.svg';
-import GoogleButton from 'react-google-button'
+
+import { BrowserRouter, Routes, Route, Switch, Link } from 'react-router-dom';
+
+import SignInPage from './pages/SignInPage';
+import PhysicalHealthPage from './pages/PhysicalHealthPage';
+import GoalsPage from './pages/GoalsPage';
+import MentalHealthPage from './pages/MentalHealthPage';
+import WellBeingPage from './pages/WellBeingPage';
+
 
 function App() {
   return (
-    <div className="App">
-      <div id='pill'>
-        Built by Team DevHealth
-      </div>
-
-      <img style={{marginTop: "30px", width: "160px"}} src={Logo} alt="Logo" />
-      <h1 style={{fontSize: "38px", marginTop: "50px"}}>The Well-Being platform <br/>for Developers</h1>
-      <p style={{fontSize: "20px", marginTop: "-10px"}}>For developers to prioritize well-being through personalized health insights.</p>
-
-      <div className='App'>
-        {/* <button id='apple-login'>Sign in with Apple</button> */}
-        <GoogleButton style={{marginTop: "80px"}}
-          onClick={() => { console.log('Google button clicked') }}
-        />
-        <p>By continuing with Apple, you agree to DevHealth’s Term of Service and Privacy Policy</p>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<SignInPage/>} />
+        <Route path='/physicalhealth' element={<PhysicalHealthPage/>}/>
+        <Route path='/mentalhealth' element={<MentalHealthPage/>}/>
+        <Route path='/wellbeing' element={<WellBeingPage/>}/>
+        <Route path='/goals' element={<GoalsPage/>}/>
+      </Routes>
+    </BrowserRouter>
+    
+ 
+    
   );
 }
 
