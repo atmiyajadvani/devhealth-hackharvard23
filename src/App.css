@@ -1,15 +1,16 @@
 .App {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: 50%;
-  top: 50%;
 }
 
 #pill{
+  margin-top: 150px;
   background-color: #f5f5f5;
   width: 196px;
-  height: 25px;
   border: 1px solid #e3e3e3;
   border-radius: 20px;
   padding: auto;
