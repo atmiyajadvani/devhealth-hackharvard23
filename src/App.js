@@ -1,5 +1,4 @@
-
-import { BrowserRouter, Routes, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import SignInPage from './pages/SignInPage';
 import PhysicalHealthPage from './pages/PhysicalHealthPage';
@@ -19,8 +18,6 @@ function App() {
         <Route path='/goals' element={<GoalsPage/>}/>
       </Routes>
     </BrowserRouter>
-    
- 
     
   );
 }

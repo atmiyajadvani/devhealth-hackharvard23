@@ -2,6 +2,13 @@ import '../App.css';
 import React from 'react';
 import Logo from '../assets/images/Logo.svg';
 import GoogleButton from 'react-google-button'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import PhysicalHealthPage from '../pages/PhysicalHealthPage';
+import GoalsPage from '../pages/GoalsPage';
+import MentalHealthPage from '../pages/MentalHealthPage';
+import WellBeingPage from '../pages/WellBeingPage';
+
 
 function SignInPage() {
     return (
@@ -17,7 +24,9 @@ function SignInPage() {
         <div className='App'>
           {/* <button id='apple-login'>Sign in with Apple</button> */}
           <GoogleButton style={{marginTop: "120px"}}
-            onClick={() => { console.log('Google button clicked') }}/>
+            onClick={() => {
+                <Route path='/goals' element={<GoalsPage/>}/>
+            }}/>
           <p>By continuing with Apple, you agree to DevHealth’s Term of Service and Privacy Policy</p>
         </div>
       </div>
