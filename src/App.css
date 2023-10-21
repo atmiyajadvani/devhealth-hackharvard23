@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   margin: auto;
   display: flex;
@@ -53,8 +57,36 @@
   border-bottom: 1px solid #e3e3e3;
 }
 
+#main-div{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 1000px;
+  height: 100px;
+  text-align: left;
+}
+
+#section-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1000px;
+  height: 100px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+#section-nav-left{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 350px;
+}
+
 #avatar-img{
   width: 40px;
   height: 40px;
   margin-left: 10px;
 }
+

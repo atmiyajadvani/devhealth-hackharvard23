@@ -37,8 +37,6 @@ function SignInPage() {
     }
   
 
-    };
-
     return (
       <div className="App">
         <div id='pill'>

@@ -3,12 +3,20 @@ import '../App.css';
 import Logo from '../assets/images/Logo.svg';
 import Avatar from '../assets/images/Avatar.png';
 
-function SimplePage() {
+function SimplePage(props) {
+
+    function getCurrentDate() {
+        const today = new Date();
+        const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        return date;
+    }
+
+
     return (
         <div className='App'>
             <div id='top-div'>
                 <div>
-                    <img src={Logo} alt="logo" />
+                <img style={{ width: "130px"}} src={Logo} alt="Logo" />
                 </div>
                 <div id='top-nav-right'>
                     <div id='nav-pill'>
@@ -20,6 +28,17 @@ function SimplePage() {
 
             <div id='main-div'>
                 <h1>Overview</h1>
+                <p style={{marginTop: "-5px"}}>
+                    Today is {getCurrentDate()}. Make sure to hydrate and move around.
+                </p>
+            </div>
+
+            <div id='section-nav'>
+                <div id='section-nav-left'>
+                    <p>Physical Health</p>
+                    <p>Mental Health</p>
+                    <p>Well Being</p>
+                </div>
             </div>
 
         </div>
