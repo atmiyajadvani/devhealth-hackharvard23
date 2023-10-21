@@ -42,6 +42,8 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+app.get('/')
+
 // Google Authentication routes
 app.get('/', async function (req, res) {
   const resp = await terra.generateWidgetSession({
@@ -53,8 +55,24 @@ app.get('/', async function (req, res) {
 });
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://developers.google.com/oauthplayground'] })
+  passport.authenticate('google', { scope: ['profile', 'email'] }),
+  (req, res) => {
+    // If there's an error in the authentication process, handle it here
+    // For example, you can use req.flash() to store an error message and return it to the frontend
+    // In this example, let's just redirect to a failure page.
+    if (req.query.error) {
+      return res.redirect('/auth/google/fail');
+    }
+
+    // If no error, proceed with the authentication process
+  }
 );
+
+app.get('/auth/google/fail', (req, res) => {
+  // You can customize this route to display an error message to the user.
+  res.send('Authentication failed. Please try again.');
+});
+
 
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
