@@ -11,6 +11,11 @@ import WellBeingPage from '../pages/WellBeingPage';
 
 
 function SignInPage() {
+
+    function autheticateUser(){
+        console.log("User authenticated")
+    }
+
     return (
       <div className="App">
         <div id='pill'>
@@ -24,9 +29,7 @@ function SignInPage() {
         <div className='App'>
           {/* <button id='apple-login'>Sign in with Apple</button> */}
           <GoogleButton style={{marginTop: "120px"}}
-            onClick={() => {
-                <Route path='/goals' element={<GoalsPage/>}/>
-            }}/>
+            onClick={autheticateUser}/>
           <p>By continuing with Apple, you agree to DevHealth’s Term of Service and Privacy Policy</p>
         </div>
       </div>

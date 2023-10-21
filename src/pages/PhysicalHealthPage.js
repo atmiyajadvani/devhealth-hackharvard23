@@ -1,12 +1,20 @@
 import React from 'react';
+import '../App.css';
+import Logo from '../assets/images/Logo.svg';
 
 function SimplePage() {
     return (
-        <div>
-            <h1>Hello, world!</h1>
-            <p>This is a simple React page.</p>
-
-            
+        <div className='App'>
+            <div id='top-div'>
+                <div>
+                    <img src={Logo} alt="logo" />
+                </div>
+                <div>
+                    <div id='nav-pill'>
+                        Built by Team DevHealth
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
