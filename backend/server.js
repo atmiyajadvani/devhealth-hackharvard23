@@ -1,6 +1,10 @@
 
 
 
+
+
+/*
+
 // 1. get MongoDB module
 var mongoose = require('mongoose');
 // 2. set DB 
@@ -85,3 +89,7 @@ Developer.remove({_id:''}, function(error,output){
 
     console.log('--- deleted ---');
 });
+
+
+
+*/

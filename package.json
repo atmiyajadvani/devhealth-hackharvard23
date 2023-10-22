@@ -2,11 +2,11 @@
   "name": "devhealth-hackharvard23",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:8000/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@material-ui/core": "^4.12.4",
+    "@mui/icons-material": "^5.14.14",
     "@mui/material": "^5.14.14",
     "@mui/styled-engine-sc": "^6.0.0-alpha.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,7 +28,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "backend": "cd backend && nodemon backend",
+    "src": "cd src && npm start",
     "start": "react-scripts start",
+    "dev":"concurrently --kill-others-on-fail \"npm run backend\" \"npm run src\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

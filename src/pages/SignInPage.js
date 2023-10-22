@@ -2,13 +2,13 @@ import '../App.css';
 import React from 'react';
 import Logo from '../assets/images/Logo.svg';
 import GoogleButton from 'react-google-button'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+/*
 import PhysicalHealthPage from './PhysicalHealthPage';
 import GoalsPage from './GoalsPage';
 import MentalHealthPage from './MentalHealthPage';
 import WellBeingPage from './WellBeingPage';
-
+*/
 import {useEffect} from "react";
 import axios from "axios";
 
@@ -41,13 +41,13 @@ function SignInPage() {
 
 
 
-  const getApi = async ()=> {
-    axios.get("/").then((res)=>console.log(res.data))
-  };
-  useEffect(()=>{
-    getApi();
-  }, []);
-  
+    const getApi = async ()=> {
+      axios.get("/").then((res)=>{console.log(res.data)});
+    };
+
+    useEffect(()=>{
+      getApi();
+    }, []);
 
     return (
       <div className="App">
