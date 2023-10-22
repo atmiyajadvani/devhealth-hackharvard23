@@ -1,19 +1,18 @@
 const express = require('express');
-const app = express();
-
 const http = require('http');
-
-const { default: Terra } = require("terra-api");
-
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
+
+
+const { default: Terra } = require("terra-api");
+const { Router } = require('express');
 require('dotenv').config();
 
-const router = express.Router();
-
-
+const app = express();
 const server = http.createServer(app);
+
+
 // Configure session
 app.use(session({
   secret: 'your_session_secret',
@@ -46,39 +45,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Google Authentication routes
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] }),
-  (req, res) => {
-    // If there's an error in the authentication process, handle it here
-    // For example, you can use req.flash() to store an error message and return it to the frontend
-    // In this example, let's just redirect to a failure page.
-    if (req.query.error) {
-      return res.redirect('/auth/google/fail');
-    }
-
-    // If no error, proceed with the authentication process
-  }
-);
-
-app.get('/auth/google/fail', (req, res) => {
-  // You can customize this route to display an error message to the user.
-  res.send('Authentication failed.');
-});
-
-
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  (req, res) => {
-    res.redirect('/profile');
-  }
-);
-
-app.get('/profile', (req, res) => {
-  res.send('Welcome, ' + req.user.displayName);
-});
-
-
+const router = Router();
 
 //APIs that go to the pages
 app.get("/", (req,res)=> {
@@ -102,6 +69,45 @@ router.get("/goals", (req,res)=>{
 });
 
 module.exports = router;
+
+// Google Authentication routes
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }),
+  (req, res) => {
+    // If there's an error in the authentication process, handle it here
+    // For example, you can use req.flash() to store an error message and return it to the frontend
+    // In this example, let's just redirect to a failure page.
+    if (req.query.error) {
+      return res.redirect('/auth/google/fail');
+    }
+    else{
+      app.get("/physicalhealth", (req,res)=>{
+        res.send("physical");
+      });
+      
+    }
+
+    // If no error, proceed with the authentication process
+  }
+);
+
+app.get('/auth/google/fail', (req, res) => {
+  // You can customize this route to display an error message to the user.
+  res.send('Authentication failed.');
+});
+
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    res.redirect('/profile');
+  }
+);
+
+app.get('/profile', (req, res) => {
+  res.send('Welcome, ' + req.user.displayName);
+});
+
 
 
 // Define additional Terra API routes here

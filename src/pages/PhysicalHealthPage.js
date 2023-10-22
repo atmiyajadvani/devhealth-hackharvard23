@@ -9,16 +9,32 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import {useEffect} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function SimplePage(props) {
+function PhysicalHealthPage() {
 
-    //const [value, setValue] = React.useState(2);
-    const tabs = ['Tab 1', 'Tab 2', 'Tab 3'];
+    const navigate = useNavigate();
+    const tabs = ['Physical', 'Mental', 'Wellbeing'];
+
+    const [currentTab, setCurrentTab] = useState(0);
 
     function getCurrentDate() {
         const today = new Date();
         const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         return date;
+    }
+
+    // Define a function to handle tab changes
+    const handleTabChange = (event, newValue) => {
+        setCurrentTab(newValue);
+    }
+
+    function goMental(){
+        navigate('/mentalhealth');
+    }
+    function goWellbeing(){
+        navigate('/wellbeing');
+
     }
     const getApi = async ()=> {
         axios.get("/physicalhealth").then((res)=>{console.log(res.data)});
@@ -51,8 +67,15 @@ function SimplePage(props) {
             </div>
 
             <div className="App">
-                <h1>Simple Tab Component</h1>
-                <Tab tabs={tabs} />
+                <Paper>
+                    <Tabs>
+                        {tabs.map((tab, index) => (
+                            <Tab key={index} label={tab} />
+                        ))}
+                    </Tabs>
+                </Paper>
+                {currentTab === 1 && <button onClick={goMental}></button>}
+                {currentTab === 2 && <button onClick={goWellbeing}></button>}
             </div>
             
 
@@ -60,7 +83,7 @@ function SimplePage(props) {
     );
 }
 
-export default SimplePage;
+export default PhysicalHealthPage;
 
 
 
